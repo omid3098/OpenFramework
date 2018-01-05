@@ -16,6 +16,12 @@
         public bool ready { get; protected set; }
         protected abstract void OnReadyCallback();
         public abstract void SetupGameContext();
+        
+        void Awake()
+        {
+            SetupGameContext();
+        }
+
         protected void Init(GameContext context)
         {
             ready = false;

@@ -14,7 +14,6 @@ public class MyGameService : IGameService, IUpdatable
 
     public IEnumerator Init()
     {
-        Debug.Log("GameService");
         intro = false;
         _audioService = (MyAudioService)context.GetService<IAudioService<OpenAudio.AudioType>>();
         _particleService = (MyParticleService)context.GetService<IParticleService>();
@@ -23,22 +22,23 @@ public class MyGameService : IGameService, IUpdatable
     }
 
 
-    public IEnumerator Intro()
+    public void Intro()
     {
+        Debug.Log("4- for example we came to game service and played some audio. you can load another level etc..");
         _audioService.Play(OpenAudio.AudioType.audio1, false);
         _particleService.Play();
         intro = true;
-        yield return 0;
     }
     public void Running()
     {
     }
     public void Finished()
     {
-        Debug.Log("Finished!!!");
     }
+
     public void IUpdate()
     {
+        Debug.Log("5- You dont need to use MonoBehaviour for having Update anymore. if your service inherit from IUpdatable interface, IUpdate is your new Update method.");
         if (!context.ready) return;
         Running();
     }

@@ -14,6 +14,7 @@ public class MyParticleService : IParticleService
     }
     public void Play()
     {
+        Debug.Log("If we had some particles, here we could play them! but we don't have any :(");
     }
 
     public void StartService()

@@ -24,10 +24,14 @@ namespace OpenUi
             else Debug.LogError("There is no hideTransition component on this window.");
         }
 
+        public void Show(Action onComplete)
+        {
+            if (showTransition != null) showTransition.Play(_onPlayCallback: onComplete);
+            else Debug.LogError("There is no showTransition component on this window.");
+        }
         public void Show()
         {
-            if (showTransition != null) showTransition.Play();
-            else Debug.LogError("There is no showTransition component on this window.");
+            Show(null);
         }
 
         private void HideIfClickedOutside()

@@ -11,7 +11,7 @@ namespace OpenUi
     {
         #region Fields
         public T windowType;
-        private List<Modal<TMod>> modalList;
+        public List<Modal<TMod>> modalList { get; private set; }
         #endregion
 
         #region Methods
@@ -20,15 +20,15 @@ namespace OpenUi
             base.Awake();
             modalList = new List<Modal<TMod>>();
         }
-        public void Hide()
+        public void Hide(Action OnComplete)
         {
-            if (hideTransition != null) hideTransition.Play();
+            if (hideTransition != null) hideTransition.Play(_onPlayCallback: OnComplete);
             else Debug.LogError("There is no hideTransition component on this window.");
         }
 
-        public void Show()
+        public void Show(Action OnComplete)
         {
-            if (showTransition != null) showTransition.Play();
+            if (showTransition != null) showTransition.Play(_onPlayCallback: OnComplete);
             else Debug.LogError("There is no showTransition component on this window.");
         }
 

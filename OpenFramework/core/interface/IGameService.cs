@@ -4,7 +4,7 @@ namespace OpenFramework
 
     public interface IGameService : IService
     {
-        IEnumerator Intro();
+        void Intro();
         void Running();
         void Finished();
     }

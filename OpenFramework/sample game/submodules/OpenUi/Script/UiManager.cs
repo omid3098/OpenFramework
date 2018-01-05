@@ -75,9 +75,15 @@ namespace OpenUi
             formButtonPrefabs.AddRange(Resources.LoadAll<FormButton>(_setting.buttonPath));
         }
 
-        public void ChangeWindow(TWin windowType)
+        public void ChangeWindow(TWin windowType, Action OnComplete = null)
         {
-            if (currentWindow != null) currentWindow.Hide();
+            if (currentWindow != null && EqualityComparer<TWin>.Default.Equals(currentWindow.windowType, windowType))
+            {
+                if (OnComplete != null) OnComplete.Invoke();
+                Debug.LogError("Returning because of same current windowType");
+                return;
+            }
+            if (currentWindow != null) currentWindow.Hide(null);
             Window<TWin, TMod> window;
             window = windowList.Find(x => EqualityComparer<TWin>.Default.Equals(x.windowType, windowType));
 
@@ -99,10 +105,15 @@ namespace OpenUi
                 }
             }
             currentWindow = window;
-            window.Show();
+            window.Show(OnComplete);
         }
 
         public Modal<TMod> ShowModal(TMod modalType)
+        {
+            return ShowModal(modalType, null);
+        }
+
+        public Modal<TMod> ShowModal(TMod modalType, Action OnComplete)
         {
             Modal<TMod> modal;
             modal = currentWindow.GetModal(modalType);
@@ -122,8 +133,18 @@ namespace OpenUi
                     return null;
                 }
             }
+            else
+            {
+                // if modal is already active, return without showing again.
+                // because we only can have one active modal with each type.
+                if (modal.gameObject.activeInHierarchy)
+                {
+                    if (OnComplete != null) OnComplete.Invoke();
+                    return modal;
+                }
+            }
             currentWindow.AddModal(modal);
-            modal.Show();
+            modal.Show(OnComplete);
             return modal;
         }
 
@@ -134,7 +155,7 @@ namespace OpenUi
             if (modal != null)
             {
                 modal.Hide();
-                currentWindow.RemoveModal(modal);
+                // currentWindow.RemoveModal(modal);
             }
             return modal;
         }

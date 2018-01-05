@@ -16,6 +16,7 @@ public class MyAudioService : IAudioService<OpenAudio.AudioType>
     public IEnumerator Init()
     {
         audioManager = new AudioManager();
+        audioManager.Init();
         ready = true;
         yield return 0;
     }

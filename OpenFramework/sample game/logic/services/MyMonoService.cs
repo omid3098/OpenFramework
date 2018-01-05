@@ -1,8 +1,7 @@
 using System.Collections;
 using OpenFramework;
 using UnityEngine;
-
-public class MonoService : MonoBehaviour
+public class MyMonoService : MonoBehaviour
 {
     public static GameContext context;
 
