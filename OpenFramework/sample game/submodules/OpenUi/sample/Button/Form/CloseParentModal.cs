@@ -1,6 +1,6 @@
 using OpenUi;
 
-namespace OpenUi
+namespace OpenUi.Sample
 {
     public class CloseParentModal : FormButton
     {

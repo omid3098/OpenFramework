@@ -1,6 +1,6 @@
 namespace OpenUi
 {
-    public class ODButton : ViewBase
+    public class UiButton : ViewBase
     {
         UnityEngine.UI.Button button;
         override protected void Awake()

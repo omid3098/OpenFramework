@@ -1,7 +1,9 @@
-using OpenUi;
-public class SampleUiManager : UiManager<SampleWindowType, SampleModalType>
+namespace OpenUi.Sample
 {
-    public SampleUiManager(UiManagerSetting setting) : base(setting)
+    public class SampleUiManager : UiManager<SampleWindowType, SampleModalType>
     {
+        public SampleUiManager(UiManagerSetting setting) : base(setting)
+        {
+        }
     }
 }

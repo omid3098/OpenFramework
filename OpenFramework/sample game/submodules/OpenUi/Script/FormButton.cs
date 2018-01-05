@@ -1,6 +1,7 @@
 namespace OpenUi
 {
-    public class FormButton: ODButton{
+    public class FormButton : UiButton
+    {
         public FormButtonTypes formButtonType;
     }
 }

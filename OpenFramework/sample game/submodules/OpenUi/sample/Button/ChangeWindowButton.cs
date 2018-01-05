@@ -1,9 +1,9 @@
 using OpenUi;
 using UnityEngine;
 
-namespace OpenUi
+namespace OpenUi.Sample
 {
-    public class ChangeWindowButton : ODButton
+    public class ChangeWindowButton : UiButton
     {
         [SerializeField] private SampleWindowType windowType;
         private UiManager<SampleWindowType, SampleModalType> uiManager;
@@ -11,7 +11,7 @@ namespace OpenUi
         {
             base.Pressed();
             Debug.Log("Showing window: " + windowType);
-            // if (uiManager == null) uiManager = FindObjectOfType<UiManager<SampleWindowType, SampleModalType>>();
+            if (uiManager == null) uiManager = SampleGame.uiManager;
             if (uiManager != null) uiManager.ChangeWindow(windowType);
             else Debug.Log("Uimanager is not set");
         }

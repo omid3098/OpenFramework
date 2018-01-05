@@ -61,7 +61,6 @@ namespace OpenUi
         public void Init()
         {
             LoadService();
-            // ChangeWindow(initialMenu);
         }
 
         void LoadService()
