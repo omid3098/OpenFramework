@@ -15,3 +15,7 @@ The idea behind this framework is to simply have a main context and some service
  - Make your own context derived from GameContext.
  - In your own gamecontext, register your services inside SetupGameContext method.
  - call ```Init(this);``` after registering all services. this will initialize all services one by one and pass your context as gamecontext of the services.
+
+ ## TODO: 
+  - Use AssetBundles for asset management.
+  

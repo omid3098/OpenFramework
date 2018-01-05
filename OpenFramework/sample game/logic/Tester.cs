@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using OpenFramework;
 using UnityEngine;
 
-public class Tester : MonoService
+namespace OpenFramework.Sample
 {
-    MyAudioService _audio;
-    void Awake()
+    public class Tester : MonoService
     {
-        _audio = (MyAudioService)context.GetService<IAudioService<OpenAudio.AudioType>>();
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
+        MyAudioService _audio;
+        void Awake()
         {
-            _audio.Play(OpenAudio.AudioType.audio1, false);
+            _audio = (MyAudioService)context.GetService<IAudioService<OpenAudio.AudioType>>();
+        }
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _audio.Play(OpenAudio.AudioType.audio1, false);
+            }
         }
     }
 }

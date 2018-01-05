@@ -1,8 +1,11 @@
 using System.Collections;
 using OpenFramework;
 using UnityEngine;
-public class MyMonoService : MonoBehaviour
+namespace OpenFramework.Sample
 {
-    public static GameContext context;
+    public class MyMonoService : MonoBehaviour
+    {
+        public static GameContext context;
 
+    }
 }
