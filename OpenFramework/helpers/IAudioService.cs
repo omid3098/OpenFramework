@@ -1,4 +1,4 @@
-namespace OpenFramework.Sample
+namespace OpenFramework.Helper
 {
     using System.Collections.Generic;
     using UnityEngine;

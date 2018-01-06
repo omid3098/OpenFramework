@@ -17,5 +17,6 @@ The idea behind this framework is to simply have a main context and some service
  - call ```Init(this);``` after registering all services. this will initialize all services one by one and pass your context as gamecontext of the services.
 
  ## TODO: 
+  - Add dependency injection.
   - Use AssetBundles for asset management.
   

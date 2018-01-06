@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using OpenFramework;
+using OpenFramework.Helper;
 using UnityEngine;
 namespace OpenFramework.Sample
 {

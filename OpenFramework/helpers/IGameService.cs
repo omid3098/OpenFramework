@@ -1,4 +1,4 @@
-namespace OpenFramework
+namespace OpenFramework.Helper
 {
     using System.Collections;
 
