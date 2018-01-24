@@ -74,13 +74,13 @@ namespace OpenUi
             formButtonPrefabs.AddRange(Resources.LoadAll<FormButton>(_setting.buttonPath));
         }
 
-        public void ChangeWindow(TWin windowType, Action OnComplete = null)
+        public Window<TWin, TMod> ChangeWindow(TWin windowType, Action OnComplete = null)
         {
             if (currentWindow != null && EqualityComparer<TWin>.Default.Equals(currentWindow.windowType, windowType))
             {
                 if (OnComplete != null) OnComplete.Invoke();
                 Debug.LogError("Returning because of same current windowType");
-                return;
+                return currentWindow;
             }
             if (currentWindow != null) currentWindow.Hide(null);
             Window<TWin, TMod> window;
@@ -100,11 +100,12 @@ namespace OpenUi
                 else
                 {
                     Debug.LogError("Could not find window with " + windowType + " type in Resources/" + _setting.windowPath + " path.");
-                    return;
+                    return null;
                 }
             }
             currentWindow = window;
             window.Show(OnComplete);
+            return currentWindow;
         }
 
         public Modal<TMod> ShowModal(TMod modalType)

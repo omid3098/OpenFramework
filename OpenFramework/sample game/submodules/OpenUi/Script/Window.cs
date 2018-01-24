@@ -29,7 +29,7 @@ namespace OpenUi
         public void Show(Action OnComplete)
         {
             if (showTransition != null) showTransition.Play(_onPlayCallback: OnComplete);
-            else Debug.LogError("There is no showTransition component on this window.");
+            else Debug.LogError("There is no showTransition component on this window." + gameObject.name);
         }
 
         public void AddModal(Modal<TMod> modal)
