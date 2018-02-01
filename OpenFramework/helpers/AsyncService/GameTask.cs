@@ -2,7 +2,7 @@ using System;
 using OpenFramework;
 using UnityEngine.Assertions;
 
-namespace Gambeet
+namespace OpenFramework.Helper
 {
     public abstract class GameTask
     {

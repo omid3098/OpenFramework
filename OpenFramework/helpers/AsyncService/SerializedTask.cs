@@ -1,4 +1,4 @@
-namespace Gambeet
+namespace OpenFramework.Helper
 {
     [System.Serializable]
     public class SerializedTask

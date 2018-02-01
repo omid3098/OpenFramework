@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenFramework;
 
-namespace Gambeet
+namespace OpenFramework.Helper
 {
     public interface ISaveLoadService : IService
     {

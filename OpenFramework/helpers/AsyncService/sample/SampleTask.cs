@@ -9,7 +9,7 @@ using UnityEngine;
 /// task.OnError += (error_message)=>{ Debug.Log("error!"+ error_message)}
 /// task.Execute();
 /// </summary>
-namespace Gambeet
+namespace OpenFramework.Helper
 {
     public class SampleTask : GameTask
     {

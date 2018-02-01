@@ -1,4 +1,4 @@
-namespace Gambeet
+namespace OpenFramework.Helper
 {
     using System;
     using System.Collections;

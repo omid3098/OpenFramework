@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gambeet
+namespace OpenFramework.Helper
 {
     public class UpdateSavedTasks : GameTask
     {
