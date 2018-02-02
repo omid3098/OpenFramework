@@ -3,7 +3,7 @@ using OpenFramework;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.UiService
 {
     public class GenericChangeWindowButton<TWin, TMod> : MonoService
         where TWin : struct, IConvertible
@@ -31,9 +31,12 @@ namespace OpenFramework.Helper
         void Pressed()
         {
             Debug.Log("Showing window: " + windowType);
-            if (_uiService == null) _uiService = (UiService<TWin, TMod>)context.GetService<IUiService>();
-            if (_uiService != null) _uiService.ChangeWindow(windowType);
-            else Debug.Log("Uimanager is not set");
+            if (_uiService == null)
+                _uiService = (UiService<TWin, TMod>)context.GetService<IUiService>();
+            if (_uiService != null)
+                _uiService.ChangeWindow(windowType);
+            else
+                Debug.Log("Uimanager is not set");
         }
     }
 }

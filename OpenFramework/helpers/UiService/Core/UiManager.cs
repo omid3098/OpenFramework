@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using OpenUi;
 using UnityEngine;
-namespace OpenUi
+namespace OpenFramework.Helper.UiService
 {
     public class UiManager<TWin, TMod>
         where TWin : struct, IConvertible
@@ -30,7 +29,6 @@ namespace OpenUi
         private List<Window<TWin, TMod>> windowPrefabs;
         private List<Window<TWin, TMod>> windowList;
         private List<Modal<TMod>> modalPrefabs;
-        private List<FormButton> formButtonPrefabs;
         private Window<TWin, TMod> currentWindow;
         private UiManagerSetting _setting;
 
@@ -51,10 +49,8 @@ namespace OpenUi
             windowPrefabs = new List<Window<TWin, TMod>>();
             windowList = new List<Window<TWin, TMod>>();
             modalPrefabs = new List<Modal<TMod>>();
-            formButtonPrefabs = new List<FormButton>();
             windowPrefabs.AddRange(Resources.LoadAll<Window<TWin, TMod>>(_setting.windowPath));
             modalPrefabs.AddRange(Resources.LoadAll<Modal<TMod>>(_setting.modalPath));
-            formButtonPrefabs.AddRange(Resources.LoadAll<FormButton>(_setting.buttonPath));
         }
 
         public Window<TWin, TMod> ChangeWindow(TWin windowType, Action OnComplete = null)
@@ -141,12 +137,6 @@ namespace OpenUi
                 // currentWindow.RemoveModal(modal);
             }
             return modal;
-        }
-
-        internal FormButton GetButtonPrefab(FormButtonTypes formButtonType)
-        {
-            FormButton btnPrefab = formButtonPrefabs.Find(x => x.formButtonType == formButtonType);
-            return btnPrefab;
         }
         #endregion
     }

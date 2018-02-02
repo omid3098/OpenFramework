@@ -1,3 +1,4 @@
+using OpenFramework.Helper.UiService;
 namespace OpenUi.Sample
 {
     public class SampleUiManagerSetting : UiManagerSetting

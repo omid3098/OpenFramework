@@ -1,7 +1,7 @@
 using System;
 using Prime31.ZestKit;
 
-namespace OpenUi.Transition
+namespace OpenFramework.Helper.UiService
 {
     public class ShowTransition : BaseTransition
     {

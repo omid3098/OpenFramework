@@ -1,4 +1,4 @@
-namespace OpenUi
+namespace OpenFramework.Helper.UiService
 {
     public abstract class UiManagerSetting
     {

@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using OpenUi;
 using UnityEngine;
 
-namespace OpenUi
+namespace OpenFramework.Helper.UiService
 {
     public class Window<T, TMod> : ViewBase
         where T : struct, IConvertible
         where TMod : struct, IConvertible
     {
         #region Fields
+
         public T windowType;
         public List<Modal<TMod>> modalList { get; private set; }
+
         #endregion
 
         #region Methods
+
         protected override void Awake()
         {
             base.Awake();
@@ -22,14 +25,18 @@ namespace OpenUi
         }
         public void Hide(Action OnComplete)
         {
-            if (hideTransition != null) hideTransition.Play(_onPlayCallback: OnComplete);
-            else Debug.LogError("There is no hideTransition component on this window.");
+            if (hideTransition != null)
+                hideTransition.Play(_onPlayCallback: OnComplete);
+            else
+                Debug.LogError("There is no hideTransition component on this window.");
         }
 
         public void Show(Action OnComplete)
         {
-            if (showTransition != null) showTransition.Play(_onPlayCallback: OnComplete);
-            else Debug.LogError("There is no showTransition component on this window." + gameObject.name);
+            if (showTransition != null)
+                showTransition.Play(_onPlayCallback: OnComplete);
+            else
+                Debug.LogError("There is no showTransition component on this window." + gameObject.name);
         }
 
         public void AddModal(Modal<TMod> modal)
@@ -47,6 +54,7 @@ namespace OpenUi
         {
             modalList.Remove(modal);
         }
+
         #endregion
     }
 }

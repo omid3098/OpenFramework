@@ -1,8 +1,6 @@
 #if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
-using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 
@@ -24,7 +22,7 @@ namespace Prime31.ZestKit
 		private int _selectedNodeIndex = -1;
 		
 		
-		#region Monobehaviour and Editor
+#region Monobehaviour and Editor
 		
 		void OnEnable()
 		{
@@ -450,7 +448,7 @@ namespace Prime31.ZestKit
 						                        Quaternion.identity,
 						                        handleSize,
 						                        snapper,
-						                        Handles.SphereCap );
+						                        Handles.SphereHandleCap );
 
 						if( EditorGUI.EndChangeCheck() )
 							handleNodeMove( i, newNodePosition );
@@ -494,7 +492,8 @@ namespace Prime31.ZestKit
 							var color = Color.red;
 							color.a = 0.3f;
 							Handles.color = color;
-							Handles.SphereCap( 0, _target.nodes[i], Quaternion.identity, _snapDistance );
+							// Handles.SphereCap( 0, _target.nodes[i], Quaternion.identity, _snapDistance );
+							Handles.SphereHandleCap(0, _target.nodes[i], Quaternion.identity, _snapDistance, EventType.dragUpdated);
 							Handles.color = Color.white;
 						}
 					}					
@@ -524,10 +523,10 @@ namespace Prime31.ZestKit
 			GUI.color = originalColor;
 		}
 		
-		#endregion
+#endregion
 		
 		
-		#region Private methods
+#region Private methods
 
 		private void handleNodeMove( int index, Vector3 pos )
 		{
@@ -756,7 +755,8 @@ namespace Prime31.ZestKit
 			// get the midpoint between the 2 points
 			var dir = Vector3.Lerp( point1, point2, lerpModifier );
 			var quat = Quaternion.LookRotation( point2 - point1 );
-			Handles.ArrowCap( 0, dir, quat, 5 );
+			// Handles.ArrowCap( 0, dir, quat, 5 );
+			Handles.ArrowHandleCap(0, dir, quat, 5, EventType.dragUpdated);
 			
 			Handles.color = Color.white;
 		}
@@ -856,7 +856,7 @@ namespace Prime31.ZestKit
 			}
 		}
 		
-		#endregion
+#endregion
 		
 	}
 }

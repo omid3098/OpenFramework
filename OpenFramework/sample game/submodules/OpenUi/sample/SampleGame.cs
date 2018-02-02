@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using OpenFramework.Helper.UiService;
 
 namespace OpenUi.Sample
 {

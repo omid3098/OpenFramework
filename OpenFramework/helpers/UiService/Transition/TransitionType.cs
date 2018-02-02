@@ -1,4 +1,4 @@
-namespace OpenUi.Transition
+namespace OpenFramework.Helper.UiService
 {
     public enum TransitionType
     {

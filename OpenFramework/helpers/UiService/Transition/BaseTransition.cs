@@ -2,7 +2,7 @@ using System;
 using Prime31.ZestKit;
 using UnityEngine;
 
-namespace OpenUi.Transition
+namespace OpenFramework.Helper.UiService
 {
     public enum slideDirection
     {
@@ -11,21 +11,26 @@ namespace OpenUi.Transition
         up,
         down,
     }
+
     public abstract class BaseTransition : MonoBehaviour
     {
         public float duration = 0.2f;
         public TransitionType transitionType = TransitionType.fade;
-        public EaseType easeType;
+        public EaseType easeType = EaseType.QuartOut;
         public void Play(float _duration = -1f, TransitionType _transitionType = TransitionType.none, Action _onPlayCallback = null, EaseType _easeType = EaseType.Linear)
         {
-            if (_duration == -1f) _duration = duration;
-            if (_transitionType == TransitionType.none) _transitionType = transitionType;
-            if (_easeType == EaseType.Linear) _easeType = easeType;
+            if (_duration == -1f)
+                _duration = duration;
+            if (_transitionType == TransitionType.none)
+                _transitionType = transitionType;
+            if (_easeType == EaseType.Linear)
+                _easeType = easeType;
             switch (_transitionType)
             {
                 case TransitionType.none:
                     gameObject.SetActive(true);
-                    if (_onPlayCallback != null) _onPlayCallback.Invoke();
+                    if (_onPlayCallback != null)
+                        _onPlayCallback.Invoke();
                     break;
                 case TransitionType.fade:
                     Fade(_duration, _onPlayCallback, _easeType);

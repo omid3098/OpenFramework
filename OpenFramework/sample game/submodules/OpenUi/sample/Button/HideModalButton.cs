@@ -1,3 +1,4 @@
+using OpenFramework.Helper.UiService;
 using OpenUi;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ namespace OpenUi.Sample
 
         override protected void Pressed()
         {
-            base.Pressed();
             if (uiManager == null) uiManager = SampleGame.uiManager;
             if (uiManager != null) uiManager.HideModal(modalType);
             else Debug.Log("Uimanager is not set");

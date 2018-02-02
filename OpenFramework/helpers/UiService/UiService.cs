@@ -1,10 +1,11 @@
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.UiService
 {
     using System;
     using System.Collections;
     using OpenFramework;
     using OpenUi;
     using UnityEngine;
+
     public abstract class UiService<TWin, TMod> : IUiService
         where TWin : struct, IConvertible
         where TMod : struct, IConvertible
@@ -23,8 +24,10 @@ namespace OpenFramework.Helper
             _uiService.Init();
             _uiService.canvas.transform.SetParent(context.transform, false);
             canvas = _uiService.canvas;
+            PostInit();
             yield return 0;
         }
+        protected abstract void PostInit();
 
         protected abstract UiManagerSetting SetupUiSetting();
 

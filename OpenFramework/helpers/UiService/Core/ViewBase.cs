@@ -1,11 +1,10 @@
-using OpenUi.Transition;
 using UnityEngine;
 
-namespace OpenUi
+namespace OpenFramework.Helper.UiService
 {
     [RequireComponent(typeof(ShowTransition))]
     [RequireComponent(typeof(HideTransition))]
-    public class ViewBase : MonoBehaviour
+    public class ViewBase : MonoService
     {
         protected ShowTransition showTransition;
         protected HideTransition hideTransition;

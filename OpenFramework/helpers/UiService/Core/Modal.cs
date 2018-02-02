@@ -1,8 +1,7 @@
 using System;
-using OpenUi;
 using UnityEngine;
 
-namespace OpenUi
+namespace OpenFramework.Helper.UiService
 {
     public class Modal<T> : ViewBase
         where T : struct, IConvertible
@@ -12,6 +11,7 @@ namespace OpenUi
         [SerializeField] bool _hideIfClickOutside;
 
         #region Methods
+
         protected override void Awake()
         {
             base.Awake();
@@ -20,14 +20,18 @@ namespace OpenUi
 
         public void Hide(Action onComplete = null)
         {
-            if (hideTransition != null) hideTransition.Play(_onPlayCallback: onComplete);
-            else Debug.LogError("There is no hideTransition component on this window.");
+            if (hideTransition != null)
+                hideTransition.Play(_onPlayCallback: onComplete);
+            else
+                Debug.LogError("There is no hideTransition component on this window.");
         }
 
         public void Show(Action onComplete)
         {
-            if (showTransition != null) showTransition.Play(_onPlayCallback: onComplete);
-            else Debug.LogError("There is no showTransition component on this window.");
+            if (showTransition != null)
+                showTransition.Play(_onPlayCallback: onComplete);
+            else
+                Debug.LogError("There is no showTransition component on this window.");
         }
         public void Show()
         {
@@ -37,7 +41,7 @@ namespace OpenUi
         private void HideIfClickedOutside()
         {
             if (Input.GetMouseButton(0) &&
-                    !RectTransformUtility.RectangleContainsScreenPoint(
+                !RectTransformUtility.RectangleContainsScreenPoint(
                     _rectTransform,
                     Input.mousePosition,
                     Camera.main))
@@ -48,8 +52,10 @@ namespace OpenUi
 
         void Update()
         {
-            if (_hideIfClickOutside) HideIfClickedOutside();
+            if (_hideIfClickOutside)
+                HideIfClickedOutside();
         }
+
         #endregion
     }
 }

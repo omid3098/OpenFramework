@@ -1,6 +1,6 @@
-namespace OpenUi
+namespace OpenFramework.Helper.UiService
 {
-    public class UiButton : ViewBase
+    public abstract class UiButton : ViewBase
     {
         UnityEngine.UI.Button button;
         override protected void Awake()
@@ -10,9 +10,6 @@ namespace OpenUi
             button.onClick.AddListener(Pressed);
         }
 
-        protected virtual void Pressed()
-        {
-            // Debug.Log("Button Pressed");
-        }
+        protected abstract void Pressed();
     }
 }

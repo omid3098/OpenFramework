@@ -1,3 +1,4 @@
+using OpenFramework.Helper.UiService;
 using OpenUi;
 
 namespace OpenUi.Sample
@@ -6,7 +7,6 @@ namespace OpenUi.Sample
     {
         protected override void Pressed()
         {
-            base.Pressed();
             transform.parent.GetComponent<Modal<SampleModalType>>().Hide();
         }
     }

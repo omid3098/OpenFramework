@@ -1,6 +1,7 @@
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.UiService
 {
     using OpenUi;
+
     public class SampleUiSetting : UiManagerSetting
     {
         public override string canvasPath { get { return "ui/ui-canvas"; } }

@@ -2,7 +2,7 @@ using System;
 using Prime31.ZestKit;
 using UnityEngine;
 
-namespace OpenUi.Transition
+namespace OpenFramework.Helper.UiService
 {
     public static class TransformExtention
     {
