@@ -9,23 +9,6 @@ namespace OpenUi
         where TMod : struct, IConvertible
     {
         #region Properties
-        // private static UiManager<TWin, TMod> _instance;
-        // public static UiManager<TWin, TMod> instance
-        // {
-        //     get
-        //     {
-        //         if (_instance == null)
-        //         {
-        //             _instance = GameObject.FindObjectOfType<UiManager<TWin, TMod>>();
-        //             if (_instance == null)
-        //             {
-        //                 var t = new GameObject("ui-manager");
-        //                 _instance = t.AddComponent<UiManager<TWin, TMod>>();
-        //             }
-        //         }
-        //         return _instance;
-        //     }
-        // }
         public Canvas canvas
         {
             get
