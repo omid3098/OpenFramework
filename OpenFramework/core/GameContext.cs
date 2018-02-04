@@ -8,8 +8,8 @@
 
     public abstract class GameContext : MonoBehaviour
     {
-        public delegate void OnReadyDelegate();
-        public abstract event OnReadyDelegate OnReady;
+        public delegate void OnReadyHandler();
+        public abstract event OnReadyHandler OnReady;
         protected Dictionary<Type, IService> services = new Dictionary<Type, IService>();
         public int serviceCount { get { return services.Count; } }
         protected List<IUpdatable> updatables = new List<IUpdatable>();

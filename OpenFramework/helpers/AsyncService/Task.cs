@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 namespace OpenFramework.Helper.AsyncService
 {
-    public abstract class GameTask
+    public abstract class Task
     {
         public delegate void TaskDelegate(string data);
         public bool running;
@@ -14,7 +14,7 @@ namespace OpenFramework.Helper.AsyncService
 
         public static GameContext context;
         protected AsyncService _asyncService;
-        public GameTask(string _data = null)
+        public Task(string _data = null)
         {
             Assert.IsNotNull(context, "Context is not set. make sure AsyncService is registered in your main context!");
             data = _data;

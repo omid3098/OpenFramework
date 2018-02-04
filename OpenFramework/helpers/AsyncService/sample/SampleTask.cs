@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 namespace OpenFramework.Helper.AsyncService
 {
-    public class SampleTask : GameTask
+    public class SampleTask : Task
     {
         public override event TaskDelegate OnComplete;
         public override event TaskDelegate OnError;

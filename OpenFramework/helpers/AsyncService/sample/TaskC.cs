@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 namespace OpenFramework.Helper.AsyncService
 {
-    public class TaskC : GameTask
+    public class TaskC : Task
     {
         public override event TaskDelegate OnComplete;
         public override event TaskDelegate OnError;

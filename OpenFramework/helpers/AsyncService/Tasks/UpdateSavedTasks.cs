@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OpenFramework.Helper.AsyncService
 {
-    public class UpdateSavedTasks : GameTask
+    public class UpdateSavedTasks : Task
     {
         public UpdateSavedTasks(string _data) : base(_data)
         {
@@ -21,19 +21,19 @@ namespace OpenFramework.Helper.AsyncService
                 return;
             }
             var task = _asyncService.unfinishedTasks[0];
-            GameTask gameTask = ConvertSerializedTaskToGameTask(task);
+            Task gameTask = ConvertSerializedTaskToGameTask(task);
             gameTask.id = task.id;
             gameTask.Execute();
             gameTask.OnComplete += MoveNext;
             gameTask.OnError += RetryTask;
         }
 
-        private GameTask ConvertSerializedTaskToGameTask(SerializedTask task)
+        private Task ConvertSerializedTaskToGameTask(SerializedTask task)
         {
             Type type = Type.GetType(task.type); //target type
             Debug.Log("type: " + type + " - data: " + task.data);
             object instanceObject = Activator.CreateInstance(type, new object[] { task.data }); // an instance of target type
-            GameTask gameTask = (GameTask)instanceObject;
+            Task gameTask = (Task)instanceObject;
             // if (task.type == "UpdateProfileTask")
             // {
             //     return new UpdateProfileTask(task.data);

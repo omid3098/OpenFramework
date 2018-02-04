@@ -14,17 +14,17 @@ namespace OpenFramework.Helper.AsyncService
         public GameContext context { get; set; }
         private SaveLoadService _saveLoadService;
         public List<SerializedTask> unfinishedTasks { get; private set; }
-        public List<GameTask> taskPool { get; private set; }
+        public List<Task> taskPool { get; private set; }
         public bool ready { get; set; }
-        private GameTask currentExecutingTask;
+        private Task currentExecutingTask;
 
         public IEnumerator Init()
         {
             _saveLoadService = (SaveLoadService)context.GetService<ISaveLoadService>();
             Assert.IsNotNull(_saveLoadService, "Service is not registered");
-            GameTask.context = context;
+            Task.context = context;
             unfinishedTasks = new List<SerializedTask>();
-            taskPool = new List<GameTask>();
+            taskPool = new List<Task>();
             Debug.Log("Async service initialized");
             ready = true;
             yield return null;
@@ -55,7 +55,7 @@ namespace OpenFramework.Helper.AsyncService
             if (OnReady != null) OnReady.Invoke();
         }
 
-        public void SaveTask(GameTask task)
+        public void SaveTask(Task task)
         {
             Debug.Log("Saving Task");
             if (unfinishedTasks == null) unfinishedTasks = new List<SerializedTask>();
@@ -71,7 +71,7 @@ namespace OpenFramework.Helper.AsyncService
         {
             var _task = unfinishedTasks[0];
             unfinishedTasks.Remove(_task);
-        } public void Schedule(GameTask task)
+        } public void Schedule(Task task)
         {
             Assert.IsTrue(ready);
             // if (task.OnComplete)

@@ -7,7 +7,7 @@ namespace OpenFramework.Sample
 {
     public class MyGameContext : GameContext
     {
-        public override event OnReadyDelegate OnReady;
+        public override event OnReadyHandler OnReady;
 
         protected override void OnReadyCallback()
         {
