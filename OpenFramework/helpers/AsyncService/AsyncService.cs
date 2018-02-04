@@ -1,4 +1,4 @@
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.AsyncService
 {
     using System;
     using System.Collections;
@@ -14,7 +14,9 @@ namespace OpenFramework.Helper
         public GameContext context { get; set; }
         private SaveLoadService _saveLoadService;
         public List<SerializedTask> unfinishedTasks { get; private set; }
+        public List<GameTask> taskPool { get; private set; }
         public bool ready { get; set; }
+        private GameTask currentExecutingTask;
 
         public IEnumerator Init()
         {
@@ -22,11 +24,15 @@ namespace OpenFramework.Helper
             Assert.IsNotNull(_saveLoadService, "Service is not registered");
             GameTask.context = context;
             unfinishedTasks = new List<SerializedTask>();
+            taskPool = new List<GameTask>();
             Debug.Log("Async service initialized");
             ready = true;
             yield return null;
         }
 
+        /// <summary>
+        /// call this method when your game is ready to update unfinished tasks
+        /// </summary>
         public void UpdateUnfinishedTasks()
         {
             unfinishedTasks = _saveLoadService.LoadAllTasks();
@@ -61,10 +67,31 @@ namespace OpenFramework.Helper
             });
             _saveLoadService.SaveAllTasks(unfinishedTasks);
         }
-        public void TaskDone()
+        public void SavedTaskDone()
         {
             var _task = unfinishedTasks[0];
             unfinishedTasks.Remove(_task);
+        } public void Schedule(GameTask task)
+        {
+            Assert.IsTrue(ready);
+            // if (task.OnComplete)
+            taskPool.Add(task);
+            if (currentExecutingTask == null) ExecuteFirstTask();
+        }
+
+        private void RemoveTaskFromPool(string data)
+        {
+            taskPool.Remove(currentExecutingTask);
+            currentExecutingTask = null;
+            ExecuteFirstTask();
+        }
+
+        private void ExecuteFirstTask()
+        {
+            if (taskPool.Count == 0) return;
+            currentExecutingTask = taskPool[0];
+            currentExecutingTask.OnComplete += RemoveTaskFromPool;
+            currentExecutingTask.Execute();
         }
         public void StopService()
         {

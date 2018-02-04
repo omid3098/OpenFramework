@@ -1,4 +1,4 @@
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.AsyncService
 {
     [System.Serializable]
     public class SerializedTask

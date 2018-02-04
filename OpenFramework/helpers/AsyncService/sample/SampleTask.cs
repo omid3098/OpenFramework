@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using OpenFramework;
 using UnityEngine;
 /// <summary>
 /// how to use:
@@ -9,7 +7,7 @@ using UnityEngine;
 /// task.OnError += (error_message)=>{ Debug.Log("error!"+ error_message)}
 /// task.Execute();
 /// </summary>
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.AsyncService
 {
     public class SampleTask : GameTask
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.AsyncService
 {
     public class UpdateSavedTasks : GameTask
     {
@@ -50,7 +50,7 @@ namespace OpenFramework.Helper
 
         private void MoveNext(string data)
         {
-            _asyncService.TaskDone();
+            _asyncService.SavedTaskDone();
             Execute();
         }
     }
