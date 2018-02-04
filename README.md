@@ -137,7 +137,7 @@ MonoBehaviour Update     =>    2.34ms
 # How far you can go with this?
  - Write custom service and send a pull request.
  - You can port any asset/lib as a service and share them as gist. ie. port LeanTouch into InputService! or Tween libs into TweenService.
- - after ~year we will have a framework 
+ - after ~year we will have a framework that we only write game logic instead of doing same things for every project!
 
 
  ## TODO: 
