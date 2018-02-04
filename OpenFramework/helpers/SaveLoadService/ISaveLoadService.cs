@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenFramework;
 
-namespace OpenFramework.Helper
+namespace OpenFramework.Helper.SaveLoadService
 {
     public interface ISaveLoadService : IService
     {

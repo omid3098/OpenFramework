@@ -4,6 +4,7 @@ namespace OpenFramework.Helper.AsyncService
     using System.Collections;
     using System.Collections.Generic;
     using OpenFramework;
+    using OpenFramework.Helper.SaveLoadService;
     using UnityEngine;
     using UnityEngine.Assertions;
 
@@ -21,7 +22,7 @@ namespace OpenFramework.Helper.AsyncService
         public IEnumerator Init()
         {
             _saveLoadService = (SaveLoadService)context.GetService<ISaveLoadService>();
-            Assert.IsNotNull(_saveLoadService, "Service is not registered");
+            Assert.IsNotNull(_saveLoadService, "SaveLoadService is not registered. if you want to save offline tasks, register that.");
             Task.context = context;
             unfinishedTasks = new List<SerializedTask>();
             taskPool = new List<Task>();
@@ -71,7 +72,8 @@ namespace OpenFramework.Helper.AsyncService
         {
             var _task = unfinishedTasks[0];
             unfinishedTasks.Remove(_task);
-        } public void Schedule(Task task)
+        }
+        public void Schedule(Task task)
         {
             Assert.IsTrue(ready);
             // if (task.OnComplete)

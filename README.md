@@ -118,8 +118,9 @@ MonoBehaviour Update     =>    2.34ms
 # Helpers:
 ## AsyncService:
 
- - Create and ```Execute()``` Tasks!
- - ```Schedule()``` tasks to run them one by one! 
+ - Create and ```Execute()``` Tasks.
+ - ```Schedule()``` tasks to run them one by one.
+ - Player is offline? Save his/her progress tasks and update them on next game session! (use SaveLoadService)
 
 ## UiService:
  - Change Window 
