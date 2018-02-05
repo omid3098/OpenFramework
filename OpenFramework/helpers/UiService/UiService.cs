@@ -3,7 +3,6 @@ namespace OpenFramework.Helper.UiService
     using System;
     using System.Collections;
     using OpenFramework;
-    using OpenUi;
     using UnityEngine;
 
     public abstract class UiService<TWin, TMod> : IUiService
