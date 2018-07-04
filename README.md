@@ -115,32 +115,8 @@ Iterations: 5000  </br>
 OpenFramework IUpdate   =>    0.76ms  </br>
 MonoBehaviour Update     =>    2.34ms
 
-# Helpers:
-## AsyncService:
-
- - Create and ```Execute()``` Tasks.
- - ```Schedule()``` tasks to run them one by one.
- - Player is offline? Save his/her progress tasks and update them on next game session! (use SaveLoadService)
-
-## UiService:
- - Change Window 
- - Show/Hide modals inside each window 😱
- - Use transition effects for all Ui elements.
- - Too many other features on this! read more [here](https://github.com/omid3098/OpenUi).
-
-## SaveLoadService:
-- Handle everything you save in one place. use PlayerPrefs, File.Write, EasySave, or any other asset or method you want!
-
-## AudioService:
-- Easily load and play audio files! (WIP. check [OpenAudio](https://github.com/omid3098/OpenAudio) repo)
-
 # How far you can go with this?
  - Write custom service and send a pull request.
  - You can port any asset/lib as a service and share them as gist. ie. port LeanTouch into InputService! or Tween libs into TweenService.
  - after ~year we will have a framework that we only write game logic instead of doing same things for every project!
-
-
- ## TODO: 
-  - Add dependency injection.
-  - Use AssetBundles for asset management.
   
