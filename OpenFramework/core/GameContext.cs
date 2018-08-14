@@ -14,6 +14,7 @@
         protected Dictionary<Type, object> dictionary = new Dictionary<Type, object>();
         public int serviceCount { get { return dictionary.Count; } }
         protected List<IUpdatable> updatables = new List<IUpdatable>();
+        protected List<IFixedUpdatable> fixedUpdatables = new List<IFixedUpdatable>();
 
         public bool ready { get; protected set; }
         protected abstract void OnReadyCallback();
@@ -70,6 +71,7 @@
             // Debug.Log(" _________________________ " + typeof(T1) + " : " + itype);
             dictionary.Add(itype, service);
             if (service is IUpdatable) updatables.Add((IUpdatable)service);
+            if (service is IFixedUpdatable) fixedUpdatables.Add((IFixedUpdatable)service);
             return service;
         }
 
@@ -139,6 +141,20 @@
                 updatables[i].IUpdate();
             }
         }
+
+        /// <summary>
+        /// FixedUpdate fix-updatable services
+        /// </summary>
+        void FixedUpdate()
+        {
+            if (!ready) return;
+            for (int i = 0; i < fixedUpdatables.Count; i++)
+            {
+                fixedUpdatables[i].IFixedUpdate();
+            }
+        }
+
+
 
         private static class Reflector
         {

@@ -4,4 +4,8 @@ namespace OpenFramework
     {
         void IUpdate();
     }
+    public interface IFixedUpdatable
+    {
+        void IFixedUpdate();
+    }
 }
